@@ -11,27 +11,34 @@ get '/surveys/new' do
     erb :new
 end
 
-get '/surveys/:note_id/edit' do
+get '/surveys/:survey_id/edit' do
     @survey = Survey.find(params[:survey_id])
     erb :edit
 end
 
-get '/surveys/:note_id/delete' do
+get '/surveys/:survey_id/delete' do
     @survey = Survey.find(params[:survey_id])
     erb :delete
 end
 
 get '/surveys/:survey_id' do
     @survey = Survey.find(params[:survey_id])
+    @question = Question.find(params[:question_id])    
     erb :show
 end
 
 post '/surveys' do
     @survey = Survey.new
     @survey.title = params[:title]
-    @survey.content = params[:content]
+
+    @question = Question.new
+    @question.question = params[:question]
+
     @survey.save
     @survey.reload
+
+    @question.save
+    @question.reload   
 
     redirect "/surveys/#{@survey.id}"
 end
@@ -39,7 +46,6 @@ end
 put '/surveys/:survey_id' do
     @survey = Survey.find(params[:survey_id])
     @survey.title = params[:title]
-    @survey.content = params[:content]
     @survey.save
 
     redirect "/surveys/#{@survey.id}"

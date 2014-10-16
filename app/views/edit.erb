@@ -6,9 +6,6 @@
             <label>Title:</label>
             <input type="text" name="title" placeholder="Survey" value="<%=@survey.title%>"><br>
 
-            <label>Content:</label>
-            <textarea rows="6" cols="60" name="content" placeholder="Remember to write more surveys."><%=@survey.content%></textarea><br>
-
             <input type="submit" value="Update survey!"><br>
             <a href="/surveys/<%=@survey.id%>">CANCEL!</a>
         </form>
