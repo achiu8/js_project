@@ -1,5 +1,4 @@
-user = User.create(username: Faker::Internet.user_name,
-            password: Faker::Internet.password
+user = User.create(name: Faker::Internet.user_name, email: Faker::Internet.email, password: Faker::Internet.password
             )
 
 survey = user.surveys.create(title: Faker::Lorem.sentence)

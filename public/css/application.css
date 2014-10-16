@@ -8,7 +8,7 @@
 	margin: auto;
 }
 
-nav li{display: inline; margin:0 10px;}
+.init li{display: inline; margin:0 10px;}
 
 a{color: #01B6AD; text-decoration: none}
 a:hover{color:#0A4958;}
@@ -39,3 +39,51 @@ input[type="submit"]:hover{
   color: #FFFFFF
 }
 form{margin: 20px}
+
+
+/* Autenthication */
+
+nav {
+  width: 100%;
+  height: 40px;
+  font-weight: bold;
+}
+
+nav .brand, nav .brand a {
+  margin-left: 25px;
+  font-size: 18pt;
+  text-decoration: none;
+  color: #444;
+  width: 60%;
+  display: inline-block;
+}
+
+nav ul {
+  display: inline-block;
+  width: 30%;
+  text-align: right;
+}
+
+nav li {
+  margin-right: 25px;
+  display: inline;
+}
+
+nav li a {
+  color: gray;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  text-decoration: underline;
+}
+
+.errors {
+  color: red;
+}
+
+#sign-out input {
+  border:none;
+  background:none;
+  font-weight: :bold;
+}
