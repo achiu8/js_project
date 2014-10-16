@@ -1,12 +1,16 @@
-<h1>Edit</h1>
-<form action="/save/<%= @note.id %>" method="post">
-  Title:
-  <br>
-  <input type="text" name="title" size="71" value="<%= @note.title %>">
-  <br><br>
-  Content:
-  <br>
-  <input type="text" name="content" size="71" value="<%= @note.content %>">
-  <br>
-  <input type="submit" value="Save">
-</form>
+<section class="container">
+    <div class="content">
+        <h2>Create a new survey:</h2>
+        <form action="/surveys/<%=@survey.id%>" method="post">
+            <input type="hidden" name="_method" value="put">
+            <label>Title:</label>
+            <input type="text" name="title" placeholder="Survey" value="<%=@survey.title%>"><br>
+
+            <label>Content:</label>
+            <textarea rows="6" cols="60" name="content" placeholder="Remember to write more surveys."><%=@survey.content%></textarea><br>
+
+            <input type="submit" value="Update survey!"><br>
+            <a href="/surveys/<%=@survey.id%>">CANCEL!</a>
+        </form>
+    </div>
+</section>

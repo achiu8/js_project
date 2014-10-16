@@ -1,36 +1,51 @@
 get '/' do
-  @notes = Note.all.order(:created_at)
-
-  erb :index
+  erb :home
 end
 
-post '/' do
-  Note.create(content: params[:content])
-
-  redirect '/'
+get '/surveys' do
+    @surveys = Survey.all
+    erb :list
 end
 
-get '/edit/:id' do
-  @note = Note.find params[:id]
-
-  erb :edit
+get '/surveys/new' do
+    erb :new
 end
 
-post '/save/:id' do
-  note = Note.find params[:id]
-  note.update_attributes(title: params[:title], content: params[:content])
-  
-  redirect '/'
+get '/surveys/:note_id/edit' do
+    @survey = Survey.find(params[:survey_id])
+    erb :edit
 end
 
-get '/delete/:id' do
-  Note.find(params[:id]).destroy
-
-  redirect '/'
+get '/surveys/:note_id/delete' do
+    @survey = Survey.find(params[:survey_id])
+    erb :delete
 end
 
-get '/note/:id' do
-  @note = Note.find params[:id]
+get '/surveys/:survey_id' do
+    @survey = Survey.find(params[:survey_id])
+    erb :show
+end
 
-  erb :note
+post '/surveys' do
+    @survey = Survey.new
+    @survey.title = params[:title]
+    @survey.content = params[:content]
+    @survey.save
+    @survey.reload
+
+    redirect "/surveys/#{@survey.id}"
+end
+
+put '/surveys/:survey_id' do
+    @survey = Survey.find(params[:survey_id])
+    @survey.title = params[:title]
+    @survey.content = params[:content]
+    @survey.save
+
+    redirect "/surveys/#{@survey.id}"
+end
+
+delete '/surveys/:survey_id' do
+    Survey.find(params[:survey_id]).destroy
+    redirect '/'
 end
