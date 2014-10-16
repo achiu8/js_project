@@ -18,10 +18,26 @@
   <title></title>
 </head>
 <body>
-  <div class="container">
-    <br>
-    <a href="/">Home</a>
-    <%= yield %>
-  </div>
+
+  <nav>
+    <div class="brand"><a href="/">User Authentication</a>
+    </div>
+    <ul>
+      <% if current_user %>
+        <li>
+          <form id="sign-out" action="/sessions/<%= current_user.id %>" method="post">
+            <input name="_method" type="hidden" value="delete" />
+            <input type="submit" value="Sign Out">
+          </form>
+        </li>
+      <% else %>
+        <li><a href="/sessions/new">Sign In</a></li>
+        <li><a href="/users/new">Sign Up</a></li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <%= yield %>
+
 </body>
 </html>

@@ -1,0 +1,28 @@
+<section class="container">
+
+    <div class="content">
+        
+        <% if current_user %>
+          <ul>
+            <% @users.each do |user| %>
+                <li><%= user.name %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <h1>Welcome to SurveyMaker!<h1>
+        <% end %>
+
+
+        <h3>What do you want to do?</h3>
+        <div class = "init">
+            <ul>
+                <li>
+                    <a href="/surveys">See List of Current Surveys</a>
+                </li>
+                <li>
+                    <a href="/surveys/new">Create a New Survey</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

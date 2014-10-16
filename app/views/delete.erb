@@ -1,0 +1,15 @@
+<section class="container">
+    <div class="content">
+        <%if @survey %>
+            <h2>Are you sure you want to get rid of this survey?</h2>
+            <form action="/surveys/<%=@survey.id%>" method="post">
+                <input type="hidden" name="_method" value="delete">
+
+                <input type="submit" value="Sure. Go Ahead">
+                <br><a href="/surveys/<%=@survey.id%>">CANCEL!</a>
+            </form>
+        <%else%>
+            <h2>No surveys here. Are you trying delete something that's already forgotten?</h2>
+        <%end%>
+    </div>
+</section>
