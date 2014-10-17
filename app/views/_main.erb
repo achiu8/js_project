@@ -1,14 +1,14 @@
 <div id="side-nav">
   <h3>Surveys:</h3>
   <button id="create-new-survey">Create New Survey</button><br><br>
+  <ul>
   <% @surveys.each do |survey| %>
-    <a class="view-survey" id="<%= survey.id %>" href="#"><%= survey.title %></a>
-    <br>
+    <li>
+      <a class="view-survey" id="<%= survey.id %>" href="#"><%= survey.title %></a>
+    </li>
   <% end %>
+  </ul>
 </div>
 
-<br>
 
-<div id="main-panel">
-  test
-</div>
+<div id="main-panel"></div>

@@ -1,4 +1,5 @@
-Title: <%= @survey.title %>
+<h3><%= @survey.title %></h3>
+<button class="delete-survey" id="<%= @survey.id %>">Delete</button>
 <ul>
 <% @survey.questions.each do |question| %>
   <li><%= question.question %></li>
