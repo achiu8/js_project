@@ -40,9 +40,19 @@ function Server(options) {
     request.done(this.view.updateMainPanel);
   };
 
-  this.addChoice = function(formData){
+  this.addChoices = function(formData) {
     var request = $.ajax({
-      url: '/choice/new',
+      url: '/choices/new',
+      type: 'POST',
+      data: formData
+    });
+
+    request.done(this.view.updateMainPanel);
+  };
+
+  this.prevChoices = function(formData) {
+    var request = $.ajax({
+      url: '/choices/new',
       type: 'POST',
       data: formData
     });
