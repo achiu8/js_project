@@ -1,8 +1,13 @@
 .container {
   margin: 20px auto;
-  width: 600px;
+  width: 960px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+}
+
+#container {
+  overflow: auto;
+  border: 1px solid red;
 }
 
 th {
@@ -11,4 +16,18 @@ th {
 
 a {
   text-decoration: none;
+}
+
+#side-nav{
+  position: relative;
+  float: left;
+  margin: 5%;
+  width: 40%;
+}
+
+#main-panel{
+  position: relative;
+  float: right;
+  margin: 5%;
+  width: 40%;
 }

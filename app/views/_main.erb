@@ -1,0 +1,14 @@
+<div id="side-nav">
+  <h3>Surveys:</h3>
+  <button id="create-new-survey">Create New Survey</button><br><br>
+  <% @surveys.each do |survey| %>
+    <a class="view-survey" id="<%= survey.id %>" href="#"><%= survey.title %></a>
+    <br>
+  <% end %>
+</div>
+
+<br>
+
+<div id="main-panel">
+  test
+</div>

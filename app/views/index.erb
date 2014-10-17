@@ -1,18 +1,7 @@
-<h1>Notes</h1>
+<h1>Welcome to Survey Gorilla</h1>
+<nav>Navigation</nav>
 <br>
-Add new note:
-<form action="/" method="post">
-  <input type="text" name="content">
-  <input type="submit" value="Create">
-</form>
+<div id="container">
 
-<ul>
-  <% @notes.each do |note| %>
-    <li>
-      <%= note.title %>
-      <small><a href="/note/<%= note.id %>">View</a></small>
-      <small><a href="/edit/<%= note.id %>">Update</a></small>
-      <small><a href="/delete/<%= note.id %>">Delete</a></small>
-    </li>
-  <% end %>
-</ul>
+  <%= erb :_login %>
+</div>
