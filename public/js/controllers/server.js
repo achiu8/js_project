@@ -1,5 +1,5 @@
-function Server(options) {
-  this.view = new options.view();
+function Server(thisView) {
+  this.view = thisView;
 
   this.authenticateUser = function(formData) {
     var request = $.ajax({
@@ -50,15 +50,15 @@ function Server(options) {
     request.done(this.view.updateMainPanel);
   };
 
-  this.prevChoices = function(formData) {
-    var request = $.ajax({
-      url: '/choices/new',
-      type: 'POST',
-      data: formData
-    });
+  // this.prevChoices = function(formData) {
+  //   var request = $.ajax({
+  //     url: '/choices/prev',
+  //     type: 'POST',
+  //     data: formData
+  //   });
 
-    request.done(this.view.updateMainPanel);
-  };
+  //   request.done(this.view.updateMainPanel);
+  // };
 
   this.saveSurvey = function(survey) {
     var request = $.ajax({

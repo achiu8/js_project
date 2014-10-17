@@ -1,4 +1,5 @@
 $(document).ready(function() {
-  var controller = new Controller({ view: View, server: Server });
-  var server = new Server({ view: View });
+  var view = new View();
+  var server = new Server(view);
+  var controller = new Controller(server);
 });

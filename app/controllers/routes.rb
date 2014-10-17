@@ -42,10 +42,10 @@ post '/choices/new' do
 end
 
 # TODO
-post '/choices/prev' do
-  # @current_question = params[:question]
-  # erb :_choices_new, layout: false
-end
+# post '/choices/prev' do
+#   p @current_question = params[:question]
+#   # erb :_choices_new, layout: false
+# end
 
 post '/survey/save' do
   title = params[:title]

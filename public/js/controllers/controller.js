@@ -1,9 +1,8 @@
-function Controller(options) {
-  this.server = new options.server({ view: options.view });
+function Controller(thisServer) {
+  this.server = thisServer;
   this.survey = null;
-  this.$container = $('#container');
   this.initialize();
-};
+}
 
 Controller.prototype.initialize = function() {
   var that = this;
@@ -66,12 +65,19 @@ Controller.prototype.initialize = function() {
     that.server.addQuestion({ title: that.survey.title });
   });
 
-  $('#container').on('click', 'button.prev-question', function(e) {
-    e.preventDefault();
+  // $('#container').on('click', 'button.prev-question', function(e) {
+  //   e.preventDefault();
 
-    that.storeQuestionAndChoices(this);
-    that.server.addQuestion({ title: that.survey.title });
-  });
+  //   that.storeQuestionAndChoices(this);
+
+  //   var allQs = [];
+  //   var questions = that.survey.questions;
+  //   for (var q in questions) { allQs.push(questions[q]); }
+  //   var prevQ = allQuestions[allQuestionsKeys.length - 2];
+  //   var prevQChoices = that.survey.questions[prevQ];
+
+  //   that.server.prevChoices({ question: lastQuestion });
+  // });
 
   $('#container').on('click', 'button.save-survey', function(e) {
     e.preventDefault();
