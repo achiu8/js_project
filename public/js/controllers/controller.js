@@ -1,6 +1,7 @@
 function Controller(options) {
   this.server = new options.server({ view: options.view });
   this.survey = null;
+  this.$container = $('#container');
   this.initialize();
 };
 
@@ -48,7 +49,7 @@ Controller.prototype.initialize = function() {
     that.survey.questions[question] = [];
 
     var formData = $(this).serialize();
-    that.server.addChoice(formData);
+    that.server.addChoices(formData);
   });
 
   $('#container').on('click', 'button.add-choice', function(e) {
@@ -58,27 +59,24 @@ Controller.prototype.initialize = function() {
     $(this).before(newChoiceField);
   });
 
-  $('#container').on('submit', '#new-choice-form', function(e) {
+  $('#container').on('click', 'button.next-question', function(e) {
     e.preventDefault();
 
-    var question = $(this).prev('h3').text().split(': ').pop();
-    var choices = $(this).find('input');
-    for (var i = 0; i < choices.length; i++) {
-      that.survey.questions[question].push($(choices[i]).val());
-    }
-    
+    that.storeQuestionAndChoices(this);
+    that.server.addQuestion({ title: that.survey.title });
+  });
+
+  $('#container').on('click', 'button.prev-question', function(e) {
+    e.preventDefault();
+
+    that.storeQuestionAndChoices(this);
     that.server.addQuestion({ title: that.survey.title });
   });
 
   $('#container').on('click', 'button.save-survey', function(e) {
     e.preventDefault();
 
-    var question = $(this).parent().prev('h3').text().split(': ').pop();
-    var choices = $(this).parent().find('input');
-    for (var i = 0; i < choices.length; i++) {
-      that.survey.questions[question].push($(choices[i]).val());
-    }
-    
+    that.storeQuestionAndChoices(this);
     that.server.saveSurvey(that.survey);
   });
 
@@ -90,4 +88,11 @@ Controller.prototype.initialize = function() {
   });
 }
 
+Controller.prototype.storeQuestionAndChoices = function(el) {
+  var question = $(el).parent().prev('h3').text().split(': ').pop();
+  var choices = $(el).parent().find('input');
+  for (var i = 0; i < choices.length; i++) {
+    this.survey.questions[question].push($(choices[i]).val());
+  }
+};
 

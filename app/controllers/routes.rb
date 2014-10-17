@@ -36,9 +36,15 @@ post '/question/new' do
   erb :_question_new, layout: false
 end
 
-post '/choice/new' do
+post '/choices/new' do
   @current_question = params[:question]
-  erb :_choice_new, layout: false
+  erb :_choices_new, layout: false
+end
+
+# TODO
+post '/choices/prev' do
+  # @current_question = params[:question]
+  # erb :_choices_new, layout: false
 end
 
 post '/survey/save' do
