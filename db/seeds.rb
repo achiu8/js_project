@@ -1,4 +1,4 @@
-user = User.create(username: Faker::Internet.user_name,
+user = User.create(username: "user",
                    password: "test"
                   )
 

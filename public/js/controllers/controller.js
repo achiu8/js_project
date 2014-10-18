@@ -7,7 +7,7 @@ function Controller(thisServer) {
 Controller.prototype.initialize = function() {
   var that = this;
 
-  $('#login').on('submit', function(e) {
+  $('#container').on('submit', '#login', function(e) {
     e.preventDefault();
 
     var formData = $(this).serialize();
