@@ -1,5 +1,19 @@
 get '/' do
-  erb :index
+  erb :layout
+end
+
+get '/home' do
+  if session[:user_id]
+    redirect '/main'
+  else
+    erb :_login, layout: false
+  end
+end
+
+get '/all' do
+  @surveys = Survey.all
+
+  erb :_all, layout: false
 end
 
 get '/main' do
@@ -9,17 +23,39 @@ get '/main' do
   erb :_main, layout: false
 end
 
-post '/login' do
-  user = User.last
-  #user = User.find_by(username: params[:username])
-  @surveys = user.surveys
+get '/logout' do
+  session[:user_id] = nil
+  erb :_login, layout: false
+end
 
-  erb :_main, layout: false
+post '/login' do
+  user = User.find_by(username: params[:username])
+
+  if user
+    if user.password == params[:password]
+      session[:user_id] = user.id
+      @surveys = user.surveys
+      return erb :_main, layout: false
+    end
+  end
+
+  @message = "Invalid login."
+  erb :_login, layout: false
 end
 
 post '/survey' do
   @survey = Survey.find(params[:id])
   erb :_survey, layout: false
+end
+
+get '/survey/take' do
+  @survey = Survey.find(params[:id])
+  erb :_survey_take, layout: false
+end
+
+# TODO
+post '/survey/submit' do
+  # logic to record answers
 end
 
 delete '/survey' do
@@ -40,12 +76,6 @@ post '/choices/new' do
   @current_question = params[:question]
   erb :_choices_new, layout: false
 end
-
-# TODO
-# post '/choices/prev' do
-#   p @current_question = params[:question]
-#   # erb :_choices_new, layout: false
-# end
 
 post '/survey/save' do
   title = params[:title]

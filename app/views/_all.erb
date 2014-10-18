@@ -1,0 +1,12 @@
+<div id="side-nav">
+  <h3>All Surveys:</h3>
+  <ul>
+    <% @surveys.each do |survey| %>
+      <li>
+      <a class="take-survey" id="<%= survey.id %>" href="#"><%= survey.title %></a>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div id="main-panel"></div>

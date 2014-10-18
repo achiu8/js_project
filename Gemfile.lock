@@ -16,11 +16,12 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     backports (3.6.3)
+    bcrypt (3.1.7)
     builder (3.2.2)
     daemons (1.1.9)
     diff-lcs (1.2.5)
     eventmachine (1.0.3)
-    factory_girl (4.4.0)
+    factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
@@ -77,6 +78,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   activesupport
+  bcrypt
   factory_girl
   faker
   pg

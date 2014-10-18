@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/application.css">
+  <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"-->
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
@@ -15,9 +16,13 @@
 </head>
 <body>
   <div id="wrapper">
-    <br>
-    <a href="/">Home</a>
-    <%= yield %>
+    <a id="home" href="/">Home</a>
+    <a id="all" href="#">All</a>
+    <a id="logout" href="#">Logout</a>
+    <h1>Survey Gorilla</h1>
+    <div id="container">
+      <%= erb :_login %>
+    </div>
   </div>
 </body>
 </html>

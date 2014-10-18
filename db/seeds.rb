@@ -1,12 +1,12 @@
 user = User.create(username: Faker::Internet.user_name,
-            password: Faker::Internet.password
-            )
+                   password: "test"
+                  )
 
 
 5.times do
-  survey = user.surveys.create(title: Faker::Lorem.sentence)
+  survey = user.surveys.create(title: Faker::Commerce.product_name)
   3.times do
-    question = survey.questions.create(question: Faker::Lorem.sentence)
-    4.times { question.choices.create(choice: Faker::Lorem.sentence) }
+    question = survey.questions.create(question: Faker::Lorem.sentence + "?")
+    4.times { question.choices.create(choice: Faker::Commerce.color) }
   end
 end

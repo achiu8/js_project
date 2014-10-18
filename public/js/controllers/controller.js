@@ -12,6 +12,26 @@ Controller.prototype.initialize = function() {
 
     var formData = $(this).serialize();
     that.server.authenticateUser(formData);
+    $('#logout').css('visibility', 'visible');
+  });
+
+  $('#logout').on('click', function(e) {
+    e.preventDefault();
+
+    that.server.logout();
+    $('#logout').css('visibility', 'hidden');
+  });
+
+  $('#home').on('click', function(e) {
+    e.preventDefault();
+
+    that.server.showHome();
+  });
+
+  $('#all').on('click', function(e) {
+    e.preventDefault();
+
+    that.server.showAllSurveys();
   });
 
   $('#container').on('click', 'a.view-survey', function(e) {
@@ -22,6 +42,22 @@ Controller.prototype.initialize = function() {
 
     var id = $(this).attr('id');
     that.server.viewSurvey(id);
+  });
+
+  $('#container').on('click', 'a.take-survey', function(e) {
+    e.preventDefault();
+
+    $(this).addClass('active');
+    $('.take-survey').not(this).removeClass('active');
+
+    var id = $(this).attr('id');
+    that.server.takeSurvey(id);
+  });
+
+  $('#container').on('click', 'button#submit-survey', function(e) {
+    e.preventDefault();
+
+    that.server.submitSurvey();
   });
 
   $('#container').on('click', 'button#create-new-survey', function(e) {
@@ -64,20 +100,6 @@ Controller.prototype.initialize = function() {
     that.storeQuestionAndChoices(this);
     that.server.addQuestion({ title: that.survey.title });
   });
-
-  // $('#container').on('click', 'button.prev-question', function(e) {
-  //   e.preventDefault();
-
-  //   that.storeQuestionAndChoices(this);
-
-  //   var allQs = [];
-  //   var questions = that.survey.questions;
-  //   for (var q in questions) { allQs.push(questions[q]); }
-  //   var prevQ = allQuestions[allQuestionsKeys.length - 2];
-  //   var prevQChoices = that.survey.questions[prevQ];
-
-  //   that.server.prevChoices({ question: lastQuestion });
-  // });
 
   $('#container').on('click', 'button.save-survey', function(e) {
     e.preventDefault();

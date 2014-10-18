@@ -1,7 +1,6 @@
 #wrapper {
-  margin: 20px auto;
+  margin: 50px auto;
   width: 1000px;
-  padding: 0px 20px 20px 20px;
 }
 
 #container {
@@ -32,6 +31,12 @@ a {
 }
 
 a.view-survey {
+  display: block;
+  line-height: 1.5em;
+}
+
+a.take-survey {
+  display: block;
   line-height: 1.5em;
 }
 
@@ -46,4 +51,12 @@ a.view-survey {
 
 .active {
   background-color: #e0e0e0;
+}
+
+h4 {
+  font-weight: normal;
+}
+
+#logout {
+  visibility: hidden;
 }

@@ -11,6 +11,33 @@ function Server(thisView) {
     request.done(this.view.displayMainPage);
   };
 
+  this.logout = function() {
+    var request = $.ajax({
+      url: '/logout',
+      type: 'GET'
+    });
+
+    request.done(this.view.displayMainPage);
+  };
+
+  this.showHome = function() {
+    var request = $.ajax({
+      url: '/home',
+      type: 'GET'
+    });
+
+    request.done(this.view.displayMainPage);
+  };
+
+  this.showAllSurveys = function() {
+    var request = $.ajax({
+      url: '/all',
+      type: 'GET'
+    });
+
+    request.done(this.view.displayMainPage);
+  };
+
   this.viewSurvey = function(id) {
     var request = $.ajax({
       url: '/survey',
@@ -19,6 +46,26 @@ function Server(thisView) {
     });
 
     request.done(this.view.updateMainPanel);
+  };
+
+  this.takeSurvey = function(id) {
+    var request = $.ajax({
+      url: '/survey/take',
+      type: 'GET',
+      data: {id: id}
+    });
+
+    request.done(this.view.updateMainPanel);
+  };
+
+  this.submitSurvey = function() {
+    var request = $.ajax({
+      url: '/survey/submit',
+      type: 'POST',
+      data: null
+    });
+
+    request.done(this.view.refreshMainAfterSubmit);
   };
 
   this.createSurvey = function() {
@@ -49,16 +96,6 @@ function Server(thisView) {
 
     request.done(this.view.updateMainPanel);
   };
-
-  // this.prevChoices = function(formData) {
-  //   var request = $.ajax({
-  //     url: '/choices/prev',
-  //     type: 'POST',
-  //     data: formData
-  //   });
-
-  //   request.done(this.view.updateMainPanel);
-  // };
 
   this.saveSurvey = function(survey) {
     var request = $.ajax({

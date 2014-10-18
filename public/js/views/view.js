@@ -18,4 +18,9 @@ function View() {
     $('#' + response).remove();
     that.updateMainPanel('<h3>Survey deleted.</h3>');
   };
+
+  this.refreshMainAfterSubmit = function(response) {
+    that.updateMainPanel('<h3>Survey submitted successfully!</h3>');
+  };
+
 }

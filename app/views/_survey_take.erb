@@ -1,0 +1,13 @@
+<h3><%= @survey.title %></h3>
+<% @survey.questions.each do |question| %>
+  <h4><%= question.question %></h4>
+  <form id="<%= question.id %>">
+  <% question.choices.each do |choice| %>
+    <input type="radio" id="<%= choice.id %>"><%= choice.choice %>
+    <br>
+  <% end %>
+  </form>
+<% end %>
+<br>
+<button id="submit-survey">Submit</button>
+
